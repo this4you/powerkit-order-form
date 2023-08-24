@@ -11,6 +11,7 @@ import InputMask from 'react-input-mask';
 const inputStyle = { width: '80%', marginTop: '15px' };
 const fileInfoText = 'Підтвердження вашого статусу військовослужбовця або громадської організації.\n' +
     'Це має бути фотографія, яка підтвердить ваш статус. Фотографія може бути вашого посвідчення та/або особисте фото в формі з військовою атрибутикою або документи підтверджуючі діяльність неприбуткової благодійної орнанізації.';
+const phoneMaskConfig = {mask:"+380 99 999 99 99", maskChar:"*"};
 
 function App() {
     const [open, setOpen] = React.useState(false);
@@ -35,12 +36,13 @@ function App() {
                     <FormTextField sx={inputStyle} id="sureName" name="sureName" label="Прізвище отримувача" variant="standard"/>
                     <FormTextField sx={inputStyle} id="email" name="email" type="email" label="Email" variant="standard"/>
                     <FormTextField sx={inputStyle} id="instagram" name="instagram" label="Instagram" variant="standard"/>
-                    <InputMask id="phoneNumber" name="phoneNumber" mask="+3\8\0 99 999 99 99" maskChar="*">
-                        {
-                            //@ts-ignore
-                            (inputProps) => <FormTextField {...inputProps} sx={inputStyle} id="phoneNumber" name="phoneNumber" label="Номер телефону отримувача" variant="standard"/>
-                        }
-                    </InputMask>
+                    {/*<InputMask id="phoneNumber" name="phoneNumber" mask="+3\8\0 99 999 99 99" maskChar="*">*/}
+                    {/*    {*/}
+                    {/*        //@ts-ignore*/}
+                    {/*        (inputProps) => <FormTextField {...inputProps} sx={inputStyle} id="phoneNumber" name="phoneNumber" label="Номер телефону отримувача" variant="standard"/>*/}
+                    {/*    }*/}
+                    {/*</InputMask>*/}
+                    <FormTextField sx={inputStyle} id="phoneNumber" name="phoneNumber" label="Номер телефону отримувача" variant="standard" maskConfig={phoneMaskConfig}/>
                     <FormTextField sx={inputStyle} id="militaryNumber" name="militaryNumber" label="Номер військової частини" variant="standard"/>
                     <FormTextField sx={inputStyle} id="region" name="region" label="Населений пункт" variant="standard"/>
                     <FormTextField sx={inputStyle} id="postOffice" name="postOffice" label="Відділення" variant="standard"/>
