@@ -7,6 +7,7 @@ import { AppForm, FormTextField } from './components/commons/form';
 import { createOrder } from './application/use-cases/createOrder.ts';
 import { OrderFormValidator } from './application/validators/LoginFormValidator.ts';
 import { RegionSearchField } from './components/region-search-field/RegionSearchField.tsx';
+import { PostOfficeSearchField } from './components/post-office-search-field/PostOfficeSearchField.tsx';
 
 export const inputStyle = { width: '80%', marginTop: '25px' };
 const fileInfoText = 'Підтвердження вашого статусу військовослужбовця або громадської організації.\n' +
@@ -44,6 +45,7 @@ function App() {
                     <FormTextField sx={inputStyle} id="militaryNumber" name="militaryNumber"
                                    label="Номер військової частини" variant="standard"/>
                     <RegionSearchField/>
+                    <PostOfficeSearchField/>
                     {/*<FormTextField sx={inputStyle} id="region" name="region" label="Населений пункт" variant="standard"/>*/}
                     {/*<FormTextField sx={inputStyle} id="postOffice" name="postOffice" label="Відділення" variant="standard"/>*/}
                     <FormTextField sx={inputStyle} id="additionalInfo" name="additionalInfo"

@@ -12,10 +12,10 @@ export const RegionSearchField: React.FC = () => {
         return getRegions(value).then((data) => {
             setOptions(data);
         });
-    }, 800), []);
+    }, 600), []);
 
     useEffect(() => {
-        if (searchValue.length > 3) {
+        if (searchValue.length > 2) {
             initOptions(searchValue)
         } else {
             setOptions([]);
