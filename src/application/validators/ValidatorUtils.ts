@@ -14,7 +14,7 @@ export class ValidatorFieldUtils {
         if (value === null || value === undefined || value === '') {
             return {
                 type: 'required',
-                message: `Field is required`
+                message: `Поле є обовʼязковим`
             }
         }
     }

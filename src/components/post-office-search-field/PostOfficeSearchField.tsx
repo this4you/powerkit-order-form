@@ -90,6 +90,7 @@ export const PostOfficeSearchField: React.FC = () => {
                 ),
             }}
             textFieldProps={{
+                required: true,
                 variant: 'standard',
                 label: 'Відділення',
                 value: searchValue,

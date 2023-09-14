@@ -1,9 +1,10 @@
 import axios from 'axios';
 import { GetRegionsResponse } from './models/GetRegionsResponse.ts';
 import { Region } from '../models/Region.ts';
+import { BASE_URL } from './axios.ts';
 
-const URL = 'https://uapowerkit.creatio.com/0/ServiceModel/PKitCreateOrderService.svc/GetRegionByName'
-export const getRegionsByName = async (name: string): Promise<Region[]> => {
+const URL = `${BASE_URL}GetRegionByName`;
+export const getRegionsByNameHttp = async (name: string): Promise<Region[]> => {
     const response = await axios.create().get<{}, GetRegionsResponse, {}>(
         URL,
         {

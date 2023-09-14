@@ -36,6 +36,7 @@ export const RegionSearchField: React.FC = () => {
                 noOptionsText: 'Введіть назву населеногу пункту'
             }}
             textFieldProps={{
+                required: true,
                 variant: 'standard',
                 label: 'Населений пункт',
                 onChange: onSearchFiledChange,

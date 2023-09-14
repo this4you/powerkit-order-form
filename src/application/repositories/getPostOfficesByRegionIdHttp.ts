@@ -1,9 +1,9 @@
 import { GetRegionsResponse } from './models/GetRegionsResponse.ts';
-import { appAxios } from './axios.ts';
+import { appAxios, BASE_URL } from './axios.ts';
 import { PostOffice } from '../models/PostOffice.ts';
 
-const URL = 'https://uapowerkit.creatio.com/0/ServiceModel/PKitCreateOrderService.svc/GetPostOfficesByRegionId'
-export const getPostOfficesByRegionId = async (regionId: string): Promise<PostOffice[]> => {
+const URL = `${BASE_URL}GetPostOfficesByRegionId`;
+export const getPostOfficesByRegionIdHttp = async (regionId: string): Promise<PostOffice[]> => {
     const response = await appAxios.get<{}, GetRegionsResponse, {}>(
         URL,
         {

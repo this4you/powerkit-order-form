@@ -1,7 +1,7 @@
 import { Region } from '../models/Region.ts';
-import { getRegionsByName } from '../repositories/getRegionsByName.ts';
-import { getPostOfficesByRegionId } from '../repositories/getPostOfficesByRegionId.ts';
+import { getRegionsByNameHttp } from '../repositories/getRegionsByNameHttp.ts';
+import { getPostOfficesByRegionIdHttp } from '../repositories/getPostOfficesByRegionIdHttp.ts';
 
 export const getPostOffices = async (regionId: string): Promise<Region[]> => {
-    return await getPostOfficesByRegionId(regionId);
+    return await getPostOfficesByRegionIdHttp(regionId);
 }
