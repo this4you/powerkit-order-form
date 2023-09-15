@@ -14,7 +14,7 @@ export const UnavailableFormMessage = () => {
             }}>
                 <img width={150} src="public/sad_cat.png" alt=""/>
 
-                <Alert severity="info" sx={{ margin: '0 10px', marginBottom: '20px' }}>
+                <Alert severity="error" sx={{ margin: '0 10px', marginBottom: '20px' }}>
                     <AlertTitle><strong>Форма зараз не доступна</strong></AlertTitle>
                     Ми скоро її відкриємо, слідкуйте за новинами в нашому інстаграмі
                 </Alert>
