@@ -1,8 +1,8 @@
 import React, { useEffect, useMemo, useState } from 'react';
 import { AutocompleteTextField } from '../commons/form/autocomplete-field/AutocompleteTextField.tsx';
-import { inputStyle } from '../../App.tsx';
 import { getRegions } from '../../application/use-cases/getRegions.ts';
 import { debounce } from 'lodash';
+import { inputStyle } from '../commons/styles.ts';
 
 export const RegionSearchField: React.FC = () => {
     const [searchValue, setSearchValue] = useState('');

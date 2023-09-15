@@ -1,6 +1,5 @@
 import React, { useEffect, useMemo, useState } from 'react';
 import { AutocompleteTextField } from '../commons/form/autocomplete-field/AutocompleteTextField.tsx';
-import { inputStyle } from '../../App.tsx';
 import { debounce } from 'lodash';
 import { getPostOffices } from '../../application/use-cases/getPostOffices.ts';
 import { useFormContext, useWatch } from 'react-hook-form';
@@ -8,6 +7,7 @@ import { CreateOrderFormValues } from '../../application/models/CreateOrderFormV
 import { Region } from '../../application/models/Region.ts';
 import { PostOffice } from '../../application/models/PostOffice.ts';
 import { autocompleteClasses, Box } from '@mui/material';
+import { inputStyle } from '../commons/styles.ts';
 
 export const PostOfficeSearchField: React.FC = () => {
     const [selectedOffice, setSelectedOffice] = useState<PostOffice | null>(null);
