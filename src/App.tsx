@@ -1,13 +1,11 @@
 import './App.css';
 import React from 'react';
-import { OrderForm } from './components/order-form/OrderForm.tsx';
-import { UnavailableFormMessage } from './components/unavailable-form-message/UnavailableFormMessage.tsx';
+import { MainForm } from './components/main-form/MainForm.tsx';
 
 function App() {
     return (
         <div className="app">
-            <UnavailableFormMessage/>
-            {/*<OrderForm/>*/}
+            <MainForm/>
         </div>
     )
 }

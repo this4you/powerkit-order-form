@@ -5,7 +5,7 @@ export class ValidatorFieldUtils {
         if (!validator.isEmail(value)) {
             return {
                 type: 'email',
-                message: 'Incorrect email'
+                message: 'Некоректний email'
             };
         }
     }
@@ -21,19 +21,7 @@ export class ValidatorFieldUtils {
 
     static maxLength(value: string, max: number) {
         if (value.length <= max) {
-            return `Max length ${max}`
-        }
-    }
-
-    static password(value: string) {
-        if (!validator.isStrongPassword(value, {
-            minLength: 8,
-            minSymbols: 0
-        })) {
-            return {
-                type: 'required',
-                message: `Password must be strong`
-            }
+            return `Максимальна довжина поля ${max}`
         }
     }
 }

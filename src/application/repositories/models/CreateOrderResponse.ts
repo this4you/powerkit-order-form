@@ -1,4 +1,4 @@
 export type CreateOrderResponse = {
-    StatusCode: String,
-    Message: String
+    StatusCode: string,
+    Message: string
 }

@@ -1,5 +1,4 @@
-import React, { useMemo, useState } from 'react';
-import { CreateOrderResponse } from '../../application/repositories/models/CreateOrderResponse.ts';
+import React, { useMemo } from 'react';
 import { createOrder } from '../../application/use-cases/createOrder.ts';
 import { Alert, Box, Button, Stack } from '@mui/material';
 import logo from '../../assets/logo-powerkit.svg';
@@ -10,14 +9,18 @@ import { PostOfficeSearchField } from '../post-office-search-field/PostOfficeSea
 import { UploadFile } from '@mui/icons-material';
 import { inputStyle } from '../commons/styles.ts';
 import './OrderForm.css';
+import { FormResult } from '../../application/models/FormResult.ts';
 
 const fileInfoText = 'Нам необхідне підтвердження вашого статусу військовослужбовця або громадської організації.\n' +
     'Це має бути фотографія, яка підтвердить ваш статус. Фотографія може бути вашого посвідчення та/або особисте фото в формі з військовою атрибутикою або документи підтверджуючі діяльність неприбуткової благодійної орнанізації.';
 const phoneMaskConfig = { mask: '+380 99 999 99 99', maskChar: '*' };
 
-export const OrderForm = () => {
-    const [orderResponse, setOrderResponse] = useState<CreateOrderResponse | null>(null);
-    const createOrderHandler = useMemo(() => createOrder(setOrderResponse), [setOrderResponse]);
+type OrderFormProps = {
+    setOrderFormResult: (formResult: FormResult) => void
+}
+
+export const OrderForm: React.FC<OrderFormProps> = ({setOrderFormResult}) => {
+    const createOrderHandler = useMemo(() => createOrder(setOrderFormResult), [setOrderFormResult]);
 
     return (
         <div className="order-form">
