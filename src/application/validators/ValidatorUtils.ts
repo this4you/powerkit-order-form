@@ -20,7 +20,7 @@ export class ValidatorFieldUtils {
     }
 
     static maxLength(value: string, max: number) {
-        if (value.length <= max) {
+        if (value.length > max) {
             return `Максимальна довжина поля ${max}`
         }
     }

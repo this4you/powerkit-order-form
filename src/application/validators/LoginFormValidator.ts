@@ -15,7 +15,6 @@ export class OrderFormValidator implements FormValidator<CreateOrderFormValues> 
             militaryNumber: ValidatorFieldUtils.required(data.militaryNumber) || ValidatorFieldUtils.maxLength(data.militaryNumber, 50),
             region: ValidatorFieldUtils.required(data.region),
             postOffice: ValidatorFieldUtils.required(data.postOffice),
-            additionalInfo: ValidatorFieldUtils.required(data.additionalInfo) || ValidatorFieldUtils.maxLength(data.militaryNumber, 500),
         };
     }
 }

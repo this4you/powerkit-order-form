@@ -7,7 +7,7 @@ import InputMask from 'react-input-mask';
 export const FormTextField: React.FC<FormTextFieldProps> = ({ name, maskConfig, ...rest }) => {
     const { register, formState: { errors } } = useFormContext();
 
-    const fieldError = errors[name] as FieldError;
+    const fieldError = errors[name]?.toString() || '';
 
     const registered = register(name);
 
@@ -16,11 +16,11 @@ export const FormTextField: React.FC<FormTextFieldProps> = ({ name, maskConfig, 
             <InputMask {...registered} {...maskConfig}>
                 {
                     //@ts-ignore
-                    (inputProps) => <TextField error={!!errors[name]} helperText={fieldError?.message} {...inputProps} {...rest}/>
+                    (inputProps) => <TextField {...inputProps} {...rest} error={!!errors[name]} helperText={fieldError}/>
                 }
             </InputMask>
         );
     }
 
-    return <TextField error={!!errors[name]} helperText={fieldError?.message} {...registered} {...rest}/>;
+    return <TextField {...registered} {...rest} error={!!errors[name]} helperText={fieldError}/>;
 }
