@@ -11,4 +11,5 @@ export type CreateOrderFormValues = {
     region: Region;
     postOffice: PostOffice;
     additionalInfo: string;
+    approveDocument: FileList
 };

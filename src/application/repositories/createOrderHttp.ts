@@ -20,6 +20,10 @@ export const createOrderHttp = async (createOrder: CreateOrder): Promise<CreateO
             Region: createOrder.region,
             PostOffice: createOrder.postOffice,
             AdditionalInfo: createOrder.additionalInfo,
+            File: {
+                ApproveDocument: createOrder.file.approveDocument,
+                Name: createOrder.file.name
+            }
         }
     );
 

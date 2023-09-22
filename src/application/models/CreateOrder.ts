@@ -8,4 +8,10 @@ export type CreateOrder = {
     region: string;
     postOffice: string;
     additionalInfo: string;
+    file: ApproveDocument
 };
+
+export type ApproveDocument = {
+    name: string;
+    approveDocument: number[]
+}

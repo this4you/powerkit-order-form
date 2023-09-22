@@ -10,9 +10,9 @@ import { UploadFile } from '@mui/icons-material';
 import { inputStyle } from '../commons/styles.ts';
 import './OrderForm.css';
 import { FormResult } from '../../application/models/FormResult.ts';
+import { FileUploader } from '../file-uploader/FileUploader.tsx';
 
-const fileInfoText = 'Нам необхідне підтвердження вашого статусу військовослужбовця або громадської організації.\n' +
-    'Це має бути фотографія, яка підтвердить ваш статус. Фотографія може бути вашого посвідчення та/або особисте фото в формі з військовою атрибутикою або документи підтверджуючі діяльність неприбуткової благодійної орнанізації.';
+
 const phoneMaskConfig = { mask: '+380 99 999 99 99', maskChar: '*' };
 
 type OrderFormProps = {
@@ -46,12 +46,7 @@ export const OrderForm: React.FC<OrderFormProps> = ({setOrderFormResult}) => {
                     <PostOfficeSearchField/>
                     <FormTextField sx={inputStyle} id="additionalInfo" name="additionalInfo"
                                    label="Додаткова інформація" variant="standard"/>
-                    <Stack marginTop="35px" marginBottom="35px" marginX="40px" direction="column" spacing={2}>
-                        <Alert severity="warning">{fileInfoText}</Alert>
-                        <Button variant="outlined" endIcon={<UploadFile/>}>
-                            Завантажити фото
-                        </Button>
-                    </Stack>
+                    <FileUploader/>
                     <Button type="submit" sx={{ marginTop: '15px', marginBottom: '15px', width: '80%' }}
                             variant="contained">
                         Замовити
