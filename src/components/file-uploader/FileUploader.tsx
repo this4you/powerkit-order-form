@@ -8,10 +8,12 @@ const fileInfoText = 'Нам необхідне підтвердження ва�
     'Це має бути фотографія, яка підтвердить ваш статус. Фотографія може бути вашого посвідчення та/або особисте фото в формі з військовою атрибутикою або документи підтверджуючі діяльність неприбуткової благодійної орнанізації.';
 
 export const FileUploader: React.FC = () => {
+    const name = 'approveDocument'
     const { register, watch, formState: { errors } } = useFormContext();
-    const registered = register('approveDocument');
+    const registered = register(name);
 
-    const files = watch('approveDocument');
+    const files = watch(name);
+    const fieldError = errors[name]?.toString() || '';
 
 
     return (
@@ -34,7 +36,7 @@ export const FileUploader: React.FC = () => {
                     </Box>
                     :
                     <>
-                        <Alert severity="warning">{fileInfoText}</Alert>
+                        <Alert severity={fieldError ? 'error': 'warning'}>{fieldError || fileInfoText}</Alert>
                         <Button variant="outlined" endIcon={<UploadFile/>} component="label">
                             <input {...registered} id="approveDocument" name="approveDocument" type="file" hidden/>
                             Завантажити фото
