@@ -5,17 +5,20 @@ import { debounce } from 'lodash';
 import { inputStyle } from '../commons/styles.ts';
 
 export const RegionSearchField: React.FC = () => {
+    const [loading, setLoading] = useState(false);
     const [searchValue, setSearchValue] = useState('');
     const [options, setOptions] = useState([]);
 
     const initOptions = useMemo(() => debounce((value: string) => {
         return getRegions(value).then((data) => {
+            setLoading(false);
             setOptions(data);
         });
     }, 600), []);
 
     useEffect(() => {
         if (searchValue.length > 2) {
+            setLoading(true);
             initOptions(searchValue)
         } else {
             setOptions([]);
@@ -31,6 +34,8 @@ export const RegionSearchField: React.FC = () => {
             name="region"
             autocompleteProps={{
                 disablePortal: true,
+                loading : loading,
+                loadingText: 'Завантаження...',
                 options: options,
                 sx: inputStyle,
                 noOptionsText: 'Введіть назву населеногу пункту'

@@ -10,6 +10,7 @@ import { autocompleteClasses, Box } from '@mui/material';
 import { inputStyle } from '../commons/styles.ts';
 
 export const PostOfficeSearchField: React.FC = () => {
+    const [loading, setLoading] = useState(false);
     const [selectedOffice, setSelectedOffice] = useState<PostOffice | null>(null);
     const [searchValue, setSearchValue] = useState('');
     const [options, setOptions] = useState<PostOffice[]>([]);
@@ -23,6 +24,7 @@ export const PostOfficeSearchField: React.FC = () => {
             setPostOffices(data);
 
             if (data?.length < 20) {
+                setLoading(false);
                 setOptions(data);
             }
         });
@@ -31,6 +33,8 @@ export const PostOfficeSearchField: React.FC = () => {
     const initOptionsFromSearch = useMemo(() =>
         debounce((searchValue: string, postOffices: PostOffice[]) => {
             if (searchValue.length > 0) {
+                setLoading(false);
+
                 const officesByNumber = postOffices.filter(it => it.name.includes('№' + searchValue));
 
                 if (officesByNumber.length > 0) {
@@ -42,6 +46,7 @@ export const PostOfficeSearchField: React.FC = () => {
         }, 500), []);
 
     const onSearchFiledChange = (event: any) => {
+        setLoading(true);
         setSearchValue(event.target.value)
     }
 
@@ -66,6 +71,8 @@ export const PostOfficeSearchField: React.FC = () => {
             name="postOffice"
             onOptionChanged={setSelectedOffice}
             autocompleteProps={{
+                loading : loading,
+                loadingText: 'Завантаження...',
                 autoHighlight: true,
                 value: selectedOffice,
                 filterOptions: (options) => options,
