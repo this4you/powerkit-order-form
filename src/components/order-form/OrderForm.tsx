@@ -1,16 +1,16 @@
-import React, { useMemo } from 'react';
+import React, { useMemo, useState } from 'react';
 import { createOrder } from '../../application/use-cases/createOrder.ts';
-import { Alert, Box, Button, Stack } from '@mui/material';
+import { Box, Button } from '@mui/material';
 import logo from '../../assets/logo-powerkit.svg';
 import { AppForm, FormTextField } from '../commons/form';
 import { OrderFormValidator } from '../../application/validators/LoginFormValidator.ts';
 import { RegionSearchField } from '../region-search-field/RegionSearchField.tsx';
 import { PostOfficeSearchField } from '../post-office-search-field/PostOfficeSearchField.tsx';
-import { UploadFile } from '@mui/icons-material';
 import { inputStyle } from '../commons/styles.ts';
 import './OrderForm.css';
 import { FormResult } from '../../application/models/FormResult.ts';
 import { FileUploader } from '../file-uploader/FileUploader.tsx';
+import { ClipLoader } from 'react-spinners';
 
 
 const phoneMaskConfig = { mask: '+380 99 999 99 99', maskChar: '*' };
@@ -19,11 +19,33 @@ type OrderFormProps = {
     setOrderFormResult: (formResult: FormResult) => void
 }
 
-export const OrderForm: React.FC<OrderFormProps> = ({setOrderFormResult}) => {
-    const createOrderHandler = useMemo(() => createOrder(setOrderFormResult), [setOrderFormResult]);
+export const OrderForm: React.FC<OrderFormProps> = ({ setOrderFormResult }) => {
+    const [loading, setLoading] = useState(false);
+
+    const createOrderHandler = useMemo(() => createOrder(setOrderFormResult, setLoading), [setOrderFormResult]);
 
     return (
         <div className="order-form">
+            { loading && <Box sx={{
+                position: 'fixed',
+                height: '100vh',
+                width: '100vw',
+                display: 'flex',
+                backgroundColor: '#f2f2f2bd',
+                justifyContent: 'center',
+                alignItems: 'center',
+                margin: '0 auto',
+                zIndex: '1000',
+            }}>
+                <ClipLoader
+                    color={'black'}
+                    loading
+                    size={70}
+                    aria-label="Loading Spinner"
+                    data-testid="loader"
+                />
+            </Box>
+            }
             <Box sx={{ marginBottom: '20px', marginTop: '20px' }}>
                 <img src={logo} className="logo react" alt="React logo"/>
             </Box>

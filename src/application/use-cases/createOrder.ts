@@ -36,11 +36,15 @@ const mapFormValues = async (createOrderFormValues: CreateOrderFormValues): Prom
     postOffice: createOrderFormValues.postOffice.id
 });
 
-export const createOrder = (setOrderResponse: (formResult: FormResult) => void) =>
+export const createOrder = (setOrderResponse: (formResult: FormResult) => void, setLoading: (isLoading: boolean) => void) =>
     async (createOrderFormValues: CreateOrderFormValues) => {
+        setLoading(true);
+
         const createOrder = await mapFormValues(createOrderFormValues);
 
         const response = await createOrderHttp(createOrder);
+
+        setLoading(false);
 
         setOrderResponse({
             code: response.StatusCode,

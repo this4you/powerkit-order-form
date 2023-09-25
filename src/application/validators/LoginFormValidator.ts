@@ -15,6 +15,13 @@ export class OrderFormValidator implements FormValidator<CreateOrderFormValues> 
             militaryNumber: ValidatorFieldUtils.required(data.militaryNumber) || ValidatorFieldUtils.maxLength(data.militaryNumber, 50),
             region: ValidatorFieldUtils.required(data.region),
             postOffice: ValidatorFieldUtils.required(data.postOffice),
+            approveDocument: this.validateApproveDocument(data.approveDocument),
         };
+    }
+
+    private validateApproveDocument(fileList: FileList | null) {
+        if (!fileList || fileList.length == 0) {
+            return 'Фото підтвердження є обовʼязковим!'
+        }
     }
 }
