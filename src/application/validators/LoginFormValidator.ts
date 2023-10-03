@@ -11,7 +11,7 @@ export class OrderFormValidator implements FormValidator<CreateOrderFormValues> 
             sureName: ValidatorFieldUtils.required(data.sureName) || ValidatorFieldUtils.maxLength(data.sureName, 50),
             email: ValidatorFieldUtils.required(data.email) || ValidatorFieldUtils.email(data.email),
             instagram: ValidatorFieldUtils.required(data.instagram) || ValidatorFieldUtils.maxLength(data.militaryNumber, 50),
-            phoneNumber: ValidatorFieldUtils.required(data.phoneNumber),
+            phoneNumber: ValidatorFieldUtils.required(data.phoneNumber) || this.validatePhoneNumber(data.phoneNumber),
             militaryNumber: ValidatorFieldUtils.required(data.militaryNumber) || ValidatorFieldUtils.maxLength(data.militaryNumber, 50),
             region: ValidatorFieldUtils.required(data.region),
             postOffice: ValidatorFieldUtils.required(data.postOffice),
@@ -22,6 +22,14 @@ export class OrderFormValidator implements FormValidator<CreateOrderFormValues> 
     private validateApproveDocument(fileList: FileList | null) {
         if (!fileList || fileList.length == 0) {
             return 'Фото підтвердження є обовʼязковим!'
+        }
+    }
+
+    private validatePhoneNumber(phoneNumber: String | null) {
+        phoneNumber = phoneNumber.replace("*", "");
+
+        if (phoneNumber && phoneNumber.length < 17) {
+            return 'Потрібно заповнити номер телефону'
         }
     }
 }

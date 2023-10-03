@@ -34,8 +34,11 @@ function reformatAddress(inputString: string): string {
 
 function sortAddresses(address: PostOffice[]): PostOffice[] {
     address.sort((a, b) => {
-        const numberA = parseInt(a.name.match(/№(\d+)/)[1]);
-        const numberB = parseInt(b.name.match(/№(\d+)/)[1]);
+        const aMatch = a.name.match(/№(\d+)/);
+        const bMatch = b.name.match(/№(\d+)/);
+
+        const numberA = (aMatch?.length > 0 && parseInt(aMatch[1])) || 0;
+        const numberB = (bMatch?.length > 0 && parseInt(bMatch[1])) || 0;
 
         return numberA - numberB;
     });
