@@ -3,24 +3,14 @@ import { CreateOrder } from '../models/CreateOrder.ts';
 import { createOrderHttp } from '../repositories/createOrderHttp.ts';
 import { FormResult } from '../models/FormResult.ts';
 
-const convertFileToByteArray = async (file: File): Promise<number[]> => {
+const convertFileToByteArray = async (file: File): Promise<string> => {
     return new Promise((resolve) => {
         const reader = new FileReader();
 
-        reader.readAsArrayBuffer(file);
+        reader.readAsDataURL(file);
 
-        reader.onloadend = function (evt) {
-            const fileByteArray: number[] = [];
-
-            if (evt.target.readyState == FileReader.DONE) {
-                const arrayBuffer = evt.target.result as ArrayBuffer;
-                const array = new Uint8Array(arrayBuffer);
-                for (let i = 0; i < array.length; i++) {
-                    fileByteArray.push(array[i]);
-                }
-            }
-
-            resolve(fileByteArray);
+        reader.onloadend = function () {
+            resolve(reader?.result?.toString());
         }
     });
 }
@@ -39,15 +29,21 @@ const mapFormValues = async (createOrderFormValues: CreateOrderFormValues): Prom
 export const createOrder = (setOrderResponse: (formResult: FormResult) => void, setLoading: (isLoading: boolean) => void) =>
     async (createOrderFormValues: CreateOrderFormValues) => {
         setLoading(true);
+        try {
+            const createOrder = await mapFormValues(createOrderFormValues);
 
-        const createOrder = await mapFormValues(createOrderFormValues);
+            const response = await createOrderHttp(createOrder);
 
-        const response = await createOrderHttp(createOrder);
-
-        setLoading(false);
-
-        setOrderResponse({
-            code: response.StatusCode,
-            message: response.Message
-        });
+            setOrderResponse({
+                code: response.StatusCode,
+                message: response.Message
+            });
+        } catch (e) {
+            setOrderResponse({
+                code: "-1",
+                message: "Виникла помилка в процесі створення замовлення, будь ласка напишіть нам в instagram"
+            });
+        } finally {
+            setLoading(false);
+        }
     }

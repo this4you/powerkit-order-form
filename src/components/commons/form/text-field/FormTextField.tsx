@@ -1,6 +1,6 @@
 import React from 'react';
 import { TextField } from '@mui/material';
-import { FieldError, useFormContext } from 'react-hook-form';
+import { useFormContext } from 'react-hook-form';
 import { FormTextFieldProps } from './types.ts';
 import InputMask from 'react-input-mask';
 
@@ -8,7 +8,7 @@ export const FormTextField: React.FC<FormTextFieldProps> = ({ name, maskConfig, 
     const { register, formState: { errors } } = useFormContext();
 
     const fieldError = errors[name]?.toString() || '';
-
+    debugger
     const registered = register(name);
 
     if (maskConfig) {

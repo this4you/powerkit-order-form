@@ -39,7 +39,6 @@ export const AppForm = <T extends FieldValues>({ children, submit, formValidator
 
     const onSubmit = form.handleSubmit((data, e) => {
         e?.preventDefault();
-        console.log(data);
         submit(data);
     })
 

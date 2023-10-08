@@ -3,19 +3,13 @@ import validator from 'validator';
 export class ValidatorFieldUtils {
     static email(value: string) {
         if (!validator.isEmail(value)) {
-            return {
-                type: 'email',
-                message: 'Некоректний email'
-            };
+            return `Поле є обовʼязковим`
         }
     }
 
     static required(value: any) {
         if (value === null || value === undefined || value === '') {
-            return {
-                type: 'required',
-                message: `Поле є обовʼязковим`
-            }
+            return `Поле є обовʼязковим`;
         }
     }
 

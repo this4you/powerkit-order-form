@@ -83,7 +83,6 @@ function getResultConfig(code: string): FormResultConfig {
                     fontSize: '60px',
                 }}/>
             }
-            break;
         case '1':
             return {
                 color: '#29AB87',
@@ -92,7 +91,6 @@ function getResultConfig(code: string): FormResultConfig {
                     fontSize: '60px',
                 }}/>
             }
-            break;
         case '2':
             return {
                 color: '#296aab',
@@ -101,7 +99,14 @@ function getResultConfig(code: string): FormResultConfig {
                     fontSize: '60px',
                 }}/>
             }
-            break
+        case '-1':
+            return {
+                color: '#296aab',
+                title: 'На жаль сталась помилка',
+                icon: <ErrorIcon sx={{
+                    fontSize: '60px',
+                }}/>
+            }
     }
 }
 

@@ -13,5 +13,5 @@ export type CreateOrder = {
 
 export type ApproveDocument = {
     name: string;
-    approveDocument: number[]
+    approveDocument: string;
 }
