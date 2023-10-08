@@ -10,7 +10,11 @@ const convertFileToByteArray = async (file: File): Promise<string> => {
         reader.readAsDataURL(file);
 
         reader.onloadend = function () {
-            resolve(reader?.result?.toString());
+            resolve(
+                reader?.result?.toString()
+                    ?.replace('data:', '')
+                    ?.replace(/^.+,/, '')
+            );
         }
     });
 }
@@ -41,7 +45,7 @@ export const createOrder = (setOrderResponse: (formResult: FormResult) => void, 
         } catch (e) {
             setOrderResponse({
                 code: "-1",
-                message: "Виникла помилка в процесі створення замовлення, будь ласка напишіть нам в instagram"
+                message: "Виникла помилка в процесі створення замовлення. Будь ласка, напишіть нам в instagram"
             });
         } finally {
             setLoading(false);

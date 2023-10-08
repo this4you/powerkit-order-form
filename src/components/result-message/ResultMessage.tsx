@@ -102,7 +102,7 @@ function getResultConfig(code: string): FormResultConfig {
         case '-1':
             return {
                 color: '#296aab',
-                title: 'На жаль сталась помилка',
+                title: 'На жаль, сталась помилка',
                 icon: <ErrorIcon sx={{
                     fontSize: '60px',
                 }}/>
