@@ -19,7 +19,7 @@ export const FileUploader: React.FC = () => {
     return (
         <Stack marginTop="35px" marginBottom="35px" marginX="40px" direction="column" spacing={2}>
             {
-                files?.length > 0
+                (files?.length > 0 && !fieldError)
                     ?
                     <Box sx={{
                         display: 'flex',
@@ -36,7 +36,7 @@ export const FileUploader: React.FC = () => {
                     </Box>
                     :
                     <>
-                        <Alert severity={fieldError ? 'error': 'warning'}>{fieldError || fileInfoText}</Alert>
+                        <Alert severity={fieldError ? 'error' : 'warning'}>{fieldError || fileInfoText}</Alert>
                         <Button variant="outlined" endIcon={<UploadFile/>} component="label">
                             <input {...registered} id="approveDocument" name="approveDocument" type="file" hidden/>
                             Завантажити фото

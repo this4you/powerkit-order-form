@@ -13,6 +13,7 @@ const isEmptyObject = (obj: object): boolean => Object.entries(obj).every(([key,
 
 export const AppForm = <T extends FieldValues>({ children, submit, formValidator }: FormWrapperProps<T>) => {
     const form = useForm<T>({
+        mode: 'onChange',
         resolver: async (data) => {
             if (!formValidator) {
                 return {

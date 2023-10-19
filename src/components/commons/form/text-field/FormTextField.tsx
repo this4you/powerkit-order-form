@@ -8,7 +8,7 @@ export const FormTextField: React.FC<FormTextFieldProps> = ({ name, maskConfig, 
     const { register, formState: { errors } } = useFormContext();
 
     const fieldError = errors[name]?.toString() || '';
-    debugger
+
     const registered = register(name);
 
     if (maskConfig) {

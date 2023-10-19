@@ -4,6 +4,8 @@ import { FormValidator } from '../../components/commons/form/types.ts';
 import { FieldErrors } from 'react-hook-form/dist/types/errors';
 import { ValidatorFieldUtils } from './ValidatorUtils.ts';
 
+const FILE_MAX_SIZE_BYTES = 15_000_000;
+
 export class OrderFormValidator implements FormValidator<CreateOrderFormValues> {
     validate(data: CreateOrderFormValues): FieldErrors<CreateOrderFormValues> {
         return {
@@ -21,7 +23,11 @@ export class OrderFormValidator implements FormValidator<CreateOrderFormValues> 
 
     private validateApproveDocument(fileList: FileList | null) {
         if (!fileList || fileList.length == 0) {
-            return 'Фото підтвердження є обовʼязковим!'
+            return 'Фото підтвердження є обовʼязковим!';
+        }
+
+        if (fileList[0]?.size > FILE_MAX_SIZE_BYTES) {
+            return 'Розмір фото є завеликий, завантажте будь ласка інше фото';
         }
     }
 
