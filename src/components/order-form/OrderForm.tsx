@@ -1,7 +1,6 @@
 import React, { useMemo, useState } from 'react';
 import { createOrder } from '../../application/use-cases/createOrder.ts';
 import { Box, Button } from '@mui/material';
-import logo from '../../assets/logo-powerkit.svg';
 import { AppForm, FormTextField } from '../commons/form';
 import { OrderFormValidator } from '../../application/validators/LoginFormValidator.ts';
 import { RegionSearchField } from '../region-search-field/RegionSearchField.tsx';
@@ -46,10 +45,8 @@ export const OrderForm: React.FC<OrderFormProps> = ({ setOrderFormResult }) => {
                 />
             </Box>
             }
-            <Box sx={{ marginBottom: '20px', marginTop: '20px' }}>
-                <img src={logo} className="logo react" alt="React logo"/>
-            </Box>
-            <Box sx={{ marginBottom: '20px' }} className="form-container">
+
+            <Box sx={{ marginBottom: '20px', marginTop: '40px' }} className="form-container">
                 <h3 style={{ marginBottom: '0' }}>Форма замовлення повербанку</h3>
                 <AppForm submit={createOrderHandler} formValidator={new OrderFormValidator()}>
                     <FormTextField required sx={inputStyle} id="name" name="name" label="Імʼя отримувача"
