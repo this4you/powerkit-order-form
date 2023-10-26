@@ -18,7 +18,7 @@ export const ResultMessage: React.FC<ResultMessageProps> = ({ message, code }) =
                 borderRadius: '36px',
                 width: '90%',
                 maxWidth: '600px',
-                height: '400px',
+                minHeight: '400px',
                 display: 'flex',
                 alignItems: 'center',
                 flexDirection: 'column'
@@ -47,7 +47,7 @@ export const ResultMessage: React.FC<ResultMessageProps> = ({ message, code }) =
                 <Box sx={{
                     display: 'flex',
                     alignItems: 'center',
-                    height: '150px',
+                    minHeight: '150px',
                     boxSizing: 'border-box',
                     padding: '25px'
                 }}>
