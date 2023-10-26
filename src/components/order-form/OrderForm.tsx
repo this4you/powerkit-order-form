@@ -47,7 +47,7 @@ export const OrderForm: React.FC<OrderFormProps> = ({ setOrderFormResult }) => {
             }
 
             <Box sx={{ marginBottom: '20px', marginTop: '40px' }} className="form-container">
-                <h3 style={{ marginBottom: '0' }}>Форма замовлення повербанку</h3>
+                <h3 style={{ marginBottom: '0', marginTop: '20px'}}>Форма замовлення повербанку</h3>
                 <AppForm submit={createOrderHandler} formValidator={new OrderFormValidator()}>
                     <FormTextField required sx={inputStyle} id="name" name="name" label="Імʼя отримувача"
                                    variant="standard"/>
