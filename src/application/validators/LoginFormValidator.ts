@@ -4,7 +4,7 @@ import { FormValidator } from '../../components/commons/form/types.ts';
 import { FieldErrors } from 'react-hook-form/dist/types/errors';
 import { ValidatorFieldUtils } from './ValidatorUtils.ts';
 
-const FILE_MAX_SIZE_BYTES = 15_000_000;
+const FILE_MAX_SIZE_BYTES = 7_000_000;
 
 export class OrderFormValidator implements FormValidator<CreateOrderFormValues> {
     validate(data: CreateOrderFormValues): FieldErrors<CreateOrderFormValues> {

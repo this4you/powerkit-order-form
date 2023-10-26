@@ -3,7 +3,6 @@ import { Box, Link, Paper } from '@mui/material';
 import CheckIcon from '@mui/icons-material/Check';
 import ErrorIcon from '@mui/icons-material/Error';
 import InfoIcon from '@mui/icons-material/Info';
-import logo from '../../assets/logo-powerkit.svg';
 import InstagramIcon from '@mui/icons-material/Instagram';
 
 type ResultMessageProps = {
@@ -15,9 +14,6 @@ export const ResultMessage: React.FC<ResultMessageProps> = ({ message, code }) =
 
     return (
         <>
-            <Box sx={{ marginBottom: '20px', marginTop: '20px' }}>
-                <img src={logo} className="logo react" alt="React logo"/>
-            </Box>
             <Paper elevation={3} sx={{
                 borderRadius: '36px',
                 width: '90%',
